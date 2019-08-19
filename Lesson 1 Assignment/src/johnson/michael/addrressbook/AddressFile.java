@@ -17,7 +17,9 @@ public class AddressFile extends RandomAccessFile {
 
   /**
    * Opens a new AddressFile.
+   *
    * @param fileName The file path to the address database.
+   *
    * @throws FileNotFoundException When the file can not be opened because of permission issues,
    *     folders not existing, or other IO errors that prevent the file from being created.
    */
@@ -30,7 +32,9 @@ public class AddressFile extends RandomAccessFile {
 
   /**
    * Reads the next address in the file.
+   *
    * @return The read address.
+   *
    * @throws EOFException Whenever the end of the file is unexpectedly reached.
    */
   public Address readAddress() throws IOException {
@@ -51,8 +55,11 @@ public class AddressFile extends RandomAccessFile {
 
   /**
    * Reads the Address at index.
+   *
    * @param index The index to read the address at.
+   *
    * @return The read Address.
+   *
    * @throws EOFException Whenever the end of the file is unexpectedly reached.
    */
   public Address readAddress(final long index) throws IOException {
@@ -63,6 +70,7 @@ public class AddressFile extends RandomAccessFile {
 
   /**
    * Writes the Address at the current index.
+   *
    * @param address The Address to write.
    */
   public void writeAddress(final Address address) throws IOException {
@@ -79,6 +87,7 @@ public class AddressFile extends RandomAccessFile {
 
   /**
    * Writes the Address at the given index.
+   *
    * @param index The index to write the address at.
    * @param address The Address to be written.
    */
@@ -90,6 +99,7 @@ public class AddressFile extends RandomAccessFile {
 
   /**
    * Seeks to the given index.
+   *
    * @param index The index to seek to.
    */
   public void seekIndex(final long index) throws IOException {
@@ -112,6 +122,7 @@ public class AddressFile extends RandomAccessFile {
 
   /**
    * Retrieves the number of addresses in the database.
+   *
    * @return The number of addresses in the database.
    */
   public long getNumAddresses() throws IOException {

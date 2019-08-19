@@ -10,6 +10,7 @@ public class LengthLimitedTextField extends TextField {
 
   /**
    * Creates a new LengthLimitedTextField with a maximum length of maxLength.
+   *
    * @param maxLength The maximum length of user entered text.
    */
   public LengthLimitedTextField(final int maxLength) {
@@ -45,6 +46,7 @@ public class LengthLimitedTextField extends TextField {
   /**
    * Gets the text from the LengthLimitedTextField and cleans it up. It trims leading and trailing
    * whitespace and ensures that the text is within the maximum length.
+   *
    * @return The cleaned text.
    */
   public String getCleanedText() {

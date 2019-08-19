@@ -51,7 +51,7 @@ public class AddressBook extends Application {
   public void start(final Stage stage) {
     try {
       this.addressFile = new AddressFile("addresses.dat");
-    } catch (IOException ex) {
+    } catch (final IOException ex) {
       // Alert the user of the exception and wait for the user to close the error message
       this.showExceptionAndWait("Fatal error", "Failed to open the address database.", ex);
 
@@ -91,10 +91,10 @@ public class AddressBook extends Application {
     try {
       final Address firstAddress = this.addressFile.readAddress();
       this.displayAddress(firstAddress);
-    } catch (EOFException ex) {
+    } catch (final EOFException ex) {
       // Silently ignore EOFException and clear the text fields; there are no records in this file
       this.clearTextFields();
-    } catch (IOException ex) {
+    } catch (final IOException ex) {
       // Alert the user of the exception and wait for the user to close the error message
       this.showExceptionAndWait("Fatal error", "Failed to read the address database.", ex);
 
@@ -119,7 +119,7 @@ public class AddressBook extends Application {
       this.addressFile.seekIndex(this.addressFile.getNumAddresses() + 1);
 
       this.clearTextFields();
-    } catch (IOException ex) {
+    } catch (final IOException ex) {
       this.showExceptionAndWait("Error opening new record",
           "An error occurred while opening a new record.\nPlease try again later.", ex);
       return;
@@ -144,11 +144,11 @@ public class AddressBook extends Application {
       // Read the first record
       final Address address = this.addressFile.readAddress();
       this.displayAddress(address);
-    } catch (EOFException ex) {
+    } catch (final EOFException ex) {
       // Ignore the EOF exception and clear the text fields; there are no records in this file
 
       this.clearTextFields();
-    } catch (IOException ex) {
+    } catch (final IOException ex) {
       this.showExceptionAndWait("Error reading first record",
           "An error occurred while reading the first record.\nPlease try again later.", ex);
       return;
@@ -164,7 +164,7 @@ public class AddressBook extends Application {
     try {
       // Seek to the current index minus 2. The currently displayed record is the current index
       // minus one, so the previous one is minus two.
-      long seekTo = this.addressFile.getCurrentIndex() - 2;
+      final long seekTo = this.addressFile.getCurrentIndex() - 2;
       if (seekTo < 0) {
         // This would seek past the beginning of the file. Alert the user and don't continue.
         final Alert alert = new Alert(AlertType.INFORMATION);
@@ -181,12 +181,12 @@ public class AddressBook extends Application {
       // Read the first record
       final Address address = this.addressFile.readAddress();
       this.displayAddress(address);
-    } catch (EOFException ex) {
+    } catch (final EOFException ex) {
       // There is no previous record. This can happen if the user is in a new database. Clear the
       // text fields.
 
       this.clearTextFields();
-    } catch (IOException ex) {
+    } catch (final IOException ex) {
       this.showExceptionAndWait("Error reading previous record",
           "An error occurred while reading the previous record.\nPlease try again later.", ex);
       return;
@@ -203,7 +203,7 @@ public class AddressBook extends Application {
       // Read the next record
       final Address address = this.addressFile.readAddress();
       this.displayAddress(address);
-    } catch (EOFException ex) {
+    } catch (final EOFException ex) {
       final Alert alert = new Alert(AlertType.INFORMATION);
       alert.setTitle("No more records");
       alert.setHeaderText(null);
@@ -211,7 +211,7 @@ public class AddressBook extends Application {
       alert.showAndWait();
 
       return;
-    } catch (IOException ex) {
+    } catch (final IOException ex) {
       this.showExceptionAndWait("Error reading next record",
           "An error occurred while reading the next record.\nPlease try again later.", ex);
       return;
@@ -236,7 +236,7 @@ public class AddressBook extends Application {
       // Read the next record
       final Address address = this.addressFile.readAddress(seekTo);
       this.displayAddress(address);
-    } catch (IOException ex) {
+    } catch (final IOException ex) {
       this.showExceptionAndWait("Error reading last record",
           "An error occurred while reading the first record.\nPlease try again later.", ex);
       return;
@@ -244,6 +244,33 @@ public class AddressBook extends Application {
   }
 
   private void updateButtonPressed() {
+    LinkedList<String> validationErrors = this.validate();
+    if (validationErrors.size() > 0) {
+      // There were validation errors. Inform the user.
+
+      final Alert alert = new Alert(AlertType.ERROR);
+      alert.setTitle("Record errors");
+      alert.setHeaderText("Your record could not be saved because of the following errors.");
+
+      final StringBuilder errors = new StringBuilder();
+      boolean first = true;
+      for (final String str : validationErrors) {
+        if (!first) {
+          // Append a new line to separate errors
+          errors.append('\n');
+        } else {
+          first = false;
+        }
+        errors.append(str);
+      }
+
+      alert.setContentText(errors.toString());
+
+      alert.showAndWait();
+
+      return;
+    }
+
     // The index should be one past the record that we're currently viewing. Thus, we need to write
     // to the index at (currentIndex - 1).
     long writeToIndex = this.addressFile.getCurrentIndex() - 1;
@@ -269,7 +296,7 @@ public class AddressBook extends Application {
       alert.setHeaderText(null);
       alert.setContentText("Your record has been saved.");
       alert.showAndWait();
-    } catch (IOException ex) {
+    } catch (final IOException ex) {
       this.showExceptionAndWait("Error updating record",
           "An error occurred while updating the record.\nPlease try again later.", ex);
     }
@@ -294,8 +321,10 @@ public class AddressBook extends Application {
     if (cleanedStateField.length() <= 0) {
       errors.add("You must enter a state.");
     } else if (cleanedStateField.length() != 2) {
-      errors.add("The state must be two letters.");
-    } else {
+      errors.add("The state must be two uppercase letters.");
+    }
+
+    {
       boolean foundNonUppercase = false;
       for (final char c : cleanedStateField.toCharArray()) {
         if (!Character.isLetter(c) || !Character.isUpperCase(c)) {
@@ -314,7 +343,9 @@ public class AddressBook extends Application {
       errors.add("You must enter a ZIP Code.");
     } else if (cleanedZipCode.length() != 5) {
       errors.add("The ZIP Code must be five digits.");
-    } else {
+    }
+
+    {
       boolean foundNonDigit = false;
       for (final char c : cleanedZipCode.toCharArray()) {
         if (!Character.isDigit(c)) {
@@ -334,7 +365,9 @@ public class AddressBook extends Application {
   private boolean preRecordChangeCheck() {
     if (this.hasRecordChanged()) {
       final boolean continueDespiteRecordChange = this.promptUnsavedRecord();
+
       if (!continueDespiteRecordChange) {
+        // The user doesn't want to continue
         return false;
       }
     }
@@ -431,7 +464,7 @@ public class AddressBook extends Application {
   }
 
   private void addButton(
-      final String buttonText, EventHandler<ActionEvent> eventHandler, final Pane parent) {
+      final String buttonText, final EventHandler<ActionEvent> eventHandler, final Pane parent) {
     final Button button = new Button(buttonText);
 
     button.setOnAction(eventHandler);
@@ -484,14 +517,10 @@ public class AddressBook extends Application {
     alert.setHeaderText(null);
     alert.setContentText(
         "You have unsaved changes. If you browse to a different record, those changes\nwill be lost. Would you like to continue?");
-    Optional<ButtonType> result = alert.showAndWait();
+    final Optional<ButtonType> result = alert.showAndWait();
 
-    if (result.isPresent() && result.get() == ButtonType.OK) {
-      // The user has consented to continuing and
-      return true;
-    }
-
-    return false;
+    // The user has consented to continuing and
+    return result.isPresent() && result.get() == ButtonType.OK;
   }
 
   private void showExceptionAndWait(
