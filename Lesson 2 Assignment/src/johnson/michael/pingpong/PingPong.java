@@ -20,6 +20,10 @@ public class PingPong implements Runnable {
    * @param numTimesToPrint The number of times to print Ping or Pong.
    */
   public PingPong(final boolean printPong, final int numTimesToPrint) {
+    if (numTimesToPrint < 10) {
+      throw new IllegalArgumentException("PingPong must print at least 10 times.");
+    }
+
     this.numTimesToPrint = numTimesToPrint;
     this.printPong = printPong;
   }
@@ -34,14 +38,14 @@ public class PingPong implements Runnable {
         System.out.println(this.printPong ? "Pong" : "Ping");
       }
 
-      if (Thread.interrupted()) {
-        // This thread has been interrupted. Politely exit.
+      try {
+        // Sleep 10 seconds. Multiply 10 seconds by 1000 to get milliseconds because Thread.sleep
+        // takes milliseconds.
+        Thread.sleep(10 * 1000);
+      } catch (final InterruptedException ex) {
+        // We've been interrupted by another thread. Politely exit.
         break;
       }
-
-      // Since we're locking System.out, yield so that we can get the non-deterministic output of
-      // multiple threads running simultaneously.
-      Thread.yield();
     }
   }
 }
