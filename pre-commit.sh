@@ -9,9 +9,10 @@ unset SAVEIFS
 FAILED=0
 
 for CHANGED_FILE in "${CHANGED_FILES[@]}"; do
-	git show ":${CHANGED_FILE}" | clang-format -style=file -output-replacements-xml -assume-filename="${CHANGED_FILE}" - | grep '<replacement '>/dev/null
-	if [ $? -ne 1 ]; then
-		echo "${CHANGED_FILE}: Not clang-formatted"
+	git show ":${CHANGED_FILE}" | google-java-format --set-exit-if-changed --assume-filename="${CHANGED_FILE}" - >/dev/null 2>&1
+	CHANGED=$?
+	if [ $CHANGED -ne 0 ]; then
+		echo "${CHANGED_FILE}: Not in Google format"
 		FAILED=1
 	fi
 done
