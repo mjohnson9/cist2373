@@ -1,25 +1,31 @@
 package johnson.michael.lesson5;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Currency;
-import javafx.collections.ObservableList;
+import java.util.List;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 
-public class CurrencyRow extends HBox {
+public class CurrencyRow {
+  private final List<Node> children;
   private Currency currency;
   private DecimalFormat exchangeRateFormat;
-
   private DecimalTextField exchangeRateField;
   private CurrencyTextField currencyField;
 
   public CurrencyRow(final String currencyCode, final double exchangeRate) {
+    this.children = new ArrayList<>();
     // Use the system default FORMAT locale to format the exchange rate field
     this.exchangeRateFormat = new DecimalFormat();
     this.currency = Currency.getInstance(currencyCode);
 
     this.buildChildren(exchangeRate);
+  }
+
+  public List<Node> getRowItems() {
+    return Collections.unmodifiableList(this.children);
   }
 
   public void setNewInputAmount(final double input) {
@@ -29,18 +35,16 @@ public class CurrencyRow extends HBox {
   }
 
   private void buildChildren(final double exchangeRate) {
-    final ObservableList<Node> children = this.getChildren();
-
     final Label currencyNameLabel = new Label(this.currency.getDisplayName());
-    children.add(currencyNameLabel);
+    this.children.add(currencyNameLabel);
 
     this.exchangeRateField = new DecimalTextField(this.exchangeRateFormat);
     this.exchangeRateField.setText(this.exchangeRateFormat.format(exchangeRate));
-    children.add(this.exchangeRateField);
+    this.children.add(this.exchangeRateField);
 
     this.currencyField = new CurrencyTextField(this.currency);
     this.currencyField.setEditable(false);
     this.currencyField.setText("0");
-    children.add(this.currencyField);
+    this.children.add(this.currencyField);
   }
 }

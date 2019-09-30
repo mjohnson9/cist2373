@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="UCanAccess">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hsqldb.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackcess-2.1.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ucanaccess-4.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

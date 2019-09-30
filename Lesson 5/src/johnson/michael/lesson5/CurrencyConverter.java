@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class CurrencyConverter extends Application {
@@ -21,6 +18,7 @@ public class CurrencyConverter extends Application {
   private CurrencyTextField defaultCurrencyField;
 
   private List<CurrencyRow> rows = new ArrayList<>();
+  private int currentRow = 0;
 
   public static void main(String[] args) {
     launch(args);
@@ -28,49 +26,61 @@ public class CurrencyConverter extends Application {
 
   @Override
   public void start(Stage primaryStage) {
-    final VBox mainContent = new VBox();
-    final ObservableList<Node> mainChildren = mainContent.getChildren();
+    final GridPane primaryPane = new GridPane();
 
-    final Node dollarEntryLine = this.buildDollarEntryLine();
-    mainChildren.add(dollarEntryLine);
+    this.addDollarEntryLine(primaryPane);
+    this.addTableHeaders(primaryPane);
 
     final CurrencyRow canadianDollarsRow = this.buildCurrencyLine("CAD", 1.33d);
-    mainChildren.add(canadianDollarsRow);
-    this.rows.add(canadianDollarsRow);
+    this.addRow(primaryPane, canadianDollarsRow);
 
     final CurrencyRow euroRow = this.buildCurrencyLine("EUR", 0.91d);
-    mainChildren.add(euroRow);
-    this.rows.add(euroRow);
+    this.addRow(primaryPane, euroRow);
 
     final CurrencyRow gbpRow = this.buildCurrencyLine("GBP", 0.80d);
-    mainChildren.add(gbpRow);
-    this.rows.add(gbpRow);
+    this.addRow(primaryPane, gbpRow);
 
-    final BorderPane mainPane = new BorderPane(mainContent);
+    final Scene primaryScene = new Scene(primaryPane);
 
-    final Scene primaryScene = new Scene(mainPane);
-
+    primaryStage.setTitle("Exercise36_06");
     primaryStage.setScene(primaryScene);
     primaryStage.show();
   }
 
-  private Node buildDollarEntryLine() {
-    final HBox dollarEntryLine = new HBox();
-    final ObservableList<Node> dollarEntryChildren = dollarEntryLine.getChildren();
+  private void addRow(final GridPane pane, final CurrencyRow row) {
+    int columnIndex = 0;
+    for (final Node node : row.getRowItems()) {
+      pane.add(node, columnIndex, this.currentRow);
+      columnIndex += 1;
+    }
 
+    this.rows.add(row);
+
+    this.currentRow += 1;
+  }
+
+  private void addDollarEntryLine(final GridPane pane) {
     final Label dollarLabel = new Label(defaultCurrency.getDisplayName());
-    dollarEntryChildren.add(dollarLabel);
 
     this.defaultCurrencyField = new CurrencyTextField(defaultCurrency);
-    dollarEntryChildren.add(this.defaultCurrencyField);
 
     dollarLabel.setLabelFor(this.defaultCurrencyField);
 
     final Button convertButton = new Button("Convert");
     convertButton.setOnAction(this::convertPressed);
-    dollarEntryChildren.add(convertButton);
 
-    return dollarEntryLine;
+    pane.addRow(this.currentRow, dollarLabel, this.defaultCurrencyField, convertButton);
+    this.currentRow += 1;
+  }
+
+  private void addTableHeaders(final GridPane pane) {
+    final Label exchangeRateLabel = new Label("Exchange Rate");
+    pane.add(exchangeRateLabel, 1, this.currentRow);
+
+    final Label convertedAmountLabel = new Label("Converted Amount");
+    pane.add(convertedAmountLabel, 2, this.currentRow);
+
+    this.currentRow += 1;
   }
 
   private CurrencyRow buildCurrencyLine(final String currency, final double exchangeRate) {
