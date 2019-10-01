@@ -2,31 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be3734d9-1591-4458-9abe-31f5f1e54b27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/UCanAccess.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/NorthwindApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/NorthwindScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 5/out/production/Lesson 5/johnson/michael/lesson5/CurrencyConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson 5/out/production/Lesson 5/johnson/michael/lesson5/CurrencyConverter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 5/out/production/Lesson 5/johnson/michael/lesson5/CurrencyRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson 5/out/production/Lesson 5/johnson/michael/lesson5/CurrencyRow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 5/out/production/Lesson 5/johnson/michael/lesson5/CurrencyTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson 5/out/production/Lesson 5/johnson/michael/lesson5/CurrencyTextField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 5/out/production/Lesson 5/johnson/michael/lesson5/DecimalTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson 5/out/production/Lesson 5/johnson/michael/lesson5/DecimalTextField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 5/src/johnson/michael/lesson5/CurrencyConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson 5/src/johnson/michael/lesson5/CurrencyConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 5/src/johnson/michael/lesson5/CurrencyRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson 5/src/johnson/michael/lesson5/CurrencyRow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 5/src/johnson/michael/lesson5/CurrencyTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson 5/src/johnson/michael/lesson5/CurrencyTextField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson 5/src/johnson/michael/lesson5/DecimalTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson 5/src/johnson/michael/lesson5/DecimalTextField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/michael.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Northwind.mdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/CustomerStateView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/DatabaseDriverMissingException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/DatabaseMissingException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/EmployeesBirthYearView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/ExceptionAlert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/OrderDetailsView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/OrderTotalView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/database/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/database/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/database/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/database/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/database/OrderDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/database/OrderNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/database/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Midterm/META-INF/Midterm.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm/META-INF/Midterm.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Midterm/johnson/michael/cist2373/midterm/Database.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Midterm/johnson/michael/cist2373/midterm/NorthwindApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm/johnson/michael/cist2373/midterm/NorthwindApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Midterm/johnson/michael/cist2373/midterm/NorthwindScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Midterm/johnson/michael/cist2373/midterm/NorthwindScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/OrderView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/NorthwindApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/NorthwindApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/NorthwindScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/NorthwindScene.java" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -38,66 +46,36 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/Database.java" />
-        <option value="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/CommonScene.java" />
-        <option value="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/NorthwindApplication.java" />
-        <option value="$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/NorthwindScene.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="82" />
-    <option name="y" value="23" />
-    <option name="width" value="1198" />
-    <option name="height" value="725" />
-  </component>
+  <component name="ProjectId" id="1RZz8jojurwTh8tg8D61jlnvSI7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Midterm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Midterm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Midterm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Midterm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Midterm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Midterm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="midterm" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
-  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569885471065" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="settings.saveactions" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="johnson.michael.cist2373.midterm" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -131,79 +109,39 @@
       <option name="presentableId" value="Default" />
       <updated>1569882762570</updated>
       <workItem from="1569882767202" duration="2365000" />
+      <workItem from="1569889252109" duration="33000" />
+      <workItem from="1569889324223" duration="21505000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2365000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="725" extended-state="6" />
-    <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14862682" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" weight="0.328594" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39968404" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/NorthwindScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="35" column="34" lean-forward="true" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/NorthwindApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#214#215#0" expanded="true" />
-            <element signature="e#231#232#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/johnson/michael/cist2373/midterm/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="this.primaryStage.getWidth()" language="JAVA" />
+        <watch expression="this.primaryStage.getHeight()" language="JAVA" />
+        <watch expression="this.primaryStage.getMinWidth()" language="JAVA" />
+        <watch expression="this.primaryStage.getMinHeight()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="masterDetails">
     <states>
