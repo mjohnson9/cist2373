@@ -94,7 +94,7 @@ public class Order {
       itemsStatement.setLong(1, orderId);
       try (final ResultSet results = itemsStatement.executeQuery()) {
         while (results.next()) {
-          final OrderDetail orderDetail = new OrderDetail(this, results);
+          final OrderDetail orderDetail = new OrderDetail(results);
           orderItems.add(orderDetail);
         }
       }

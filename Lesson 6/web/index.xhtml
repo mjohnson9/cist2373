@@ -1,11 +1,37 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Tax Calculator</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Filing Status"/>
+                <h:selectOneMenu value="#{taxCalculator.filingStatus}">
+                    <f:selectItem itemValue="0" itemLabel="Single"/>
+                    <f:selectItem itemValue="1" itemLabel="Married filing jointly"/>
+                    <f:selectItem itemValue="2" itemLabel="Married filing separately"/>
+                    <f:selectItem itemValue="3" itemLabel="Head of household"/>
+                </h:selectOneMenu>
+                <h:outputLabel value="Taxable Income"/>
+                <h:inputText size="8" style="text-align: right" value="#{taxCalculator.taxableIncome}"/>
+            </h:panelGrid>
+            <h:panelGrid>
+                <h:commandButton value="Compute Tax" action="#{taxCalculator.calculateTax}" />
+            </h:panelGrid>
+            <h:panelGrid columns="2" rendered="#{taxCalculator.taxCalculated}" style="color: grey">
+                <h:outputLabel value="Taxable income:"/>
+                <h:outputLabel value="#{taxCalculator.formattedTaxableIncome}"/>
+
+                <h:outputLabel value="Filing Status:"/>
+                <h:outputLabel value="#{taxCalculator.filingStatus}"/>
+
+                <h:outputLabel value="Tax:"/>
+                <h:outputLabel value="#{taxCalculator.tax}"/>
+            </h:panelGrid>
+        </h:form>
     </h:body>
 </html>
