@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Exercise33_04 Result</title>
+    </h:head>
+    <h:body>
+        <h:panelGrid columns="2">
+            <h:outputText value="Loan Amount:" />
+            <h:outputText value="#{loanCalculator.formattedAmount}" />
+            
+            <h:outputText value="Annual Interest Rate:" />
+            <h:outputText value="#{loanCalculator.formattedAnnualInterestRate}" />
+            
+            <h:outputText value="Number of Years:" />
+            <h:outputText value="#{loanCalculator.years}" />
+            
+            <h:outputText value="Monthly Payment:" />
+            <h:outputText value="#{loanCalculator.formattedMonthlyPayment}" />
+            
+            <h:outputText value="Total Payment:" />
+            <h:outputText value="#{loanCalculator.formattedTotalPayment}" />
+        </h:panelGrid>
+    </h:body>
+</html>
+

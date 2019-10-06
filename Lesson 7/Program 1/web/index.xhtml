@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Exercise33_04</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGroup>
+                <h1>Compute Loan Payment</h1>
+            </h:panelGroup>
+            <h:panelGrid columns="3">
+                <h:outputLabel for="loanAmount" value="Loan Amount:"/>
+                <h:inputText id="loanAmount" label="Loan Amount" value="#{loanCalculator.amount}">
+                    <f:validateRequired /> <!-- Validate that the loan amount isn't empty -->
+                    <f:validateDoubleRange minimum="0.01"/> <!-- Validate that the loan amount is at least $0.01 -->
+                </h:inputText>
+                <!-- Display validation errors for the loan amount -->
+                <h:message for="loanAmount" errorStyle="color: red" fatalStyle="color: red" showSummary="true" showDetail="false" />
+                
+                <h:outputLabel for="annualInterestRate" value="Annual Interest Rate:"/>
+                <h:inputText id="annualInterestRate" label="Annual Interest Rate" value="#{loanCalculator.annualInterestRate}">
+                    <f:validateRequired /> <!-- Validate that the interest rate isn't empty -->
+                    <f:validateDoubleRange minimum="0.01"/> <!-- Validate that the interest rate is at least 0.01% -->
+                </h:inputText>
+                <!-- Display validation errors for the annual interest rate -->
+                <h:message for="annualInterestRate" errorStyle="color: red" fatalStyle="color: red" showSummary="true" showDetail="false" />
+                
+                <h:outputLabel for="years" value="Number of Years:"/>
+                <h:inputText id="years" label="Number of Years" value="#{loanCalculator.years}">
+                    <f:validateRequired /> <!-- Validate that the number of years field isn't empty -->
+                    <f:validateLongRange minimum="1" maximum="100" /> <!-- Validate that the number of years is in a sensible range -->
+                </h:inputText>
+                <!-- Display validation errors for the number of years -->
+                <h:message for="years" errorStyle="color: red" fatalStyle="color: red" showSummary="true" showDetail="false" />
+            </h:panelGrid>
+            
+            <!-- Show any global messages -->
+            <h:messages globalOnly="true" errorStyle="color: red" fatalStyle="color: red" showSummary="true" showDetail="false" />
+            
+            <h:panelGrid columns="2">
+                <h:commandButton type="submit" value="Compute Loan Payment" action="#{loanCalculator.formSubmitted()}" />
+                <h:commandButton type="reset" value="Reset" />
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
