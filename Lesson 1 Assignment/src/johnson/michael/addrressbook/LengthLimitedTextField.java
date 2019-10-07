@@ -22,22 +22,23 @@ public class LengthLimitedTextField extends TextField {
 
     this.maxLength = maxLength;
 
-    final UnaryOperator<Change> changeHandler = change -> {
-      // Check if the content actually changed
-      if (change.isContentChange()) {
-        // Validate the new text
-        final String newText = change.getControlNewText();
-        if (newText.length() > this.maxLength) {
-          // Reject the change because it's longer than the max length (credit:
-          // https://stackoverflow.com/a/33217981/476470)
-          return null;
-        }
-      }
+    final UnaryOperator<Change> changeHandler =
+        change -> {
+          // Check if the content actually changed
+          if (change.isContentChange()) {
+            // Validate the new text
+            final String newText = change.getControlNewText();
+            if (newText.length() > this.maxLength) {
+              // Reject the change because it's longer than the max length (credit:
+              // https://stackoverflow.com/a/33217981/476470)
+              return null;
+            }
+          }
 
-      // There is no user specified text formatter
-      // Accept the change
-      return change;
-    };
+          // There is no user specified text formatter
+          // Accept the change
+          return change;
+        };
 
     // Set the text field's formatter to our changeHandler
     this.setTextFormatter(new TextFormatter(changeHandler));

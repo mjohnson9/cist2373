@@ -7,9 +7,7 @@ public class Address {
   private String state;
   private String zip;
 
-  /**
-   * Creates a new Address object with all fields initialized to empty strings.
-   */
+  /** Creates a new Address object with all fields initialized to empty strings. */
   public Address() {
     this.name = "";
     this.street = "";

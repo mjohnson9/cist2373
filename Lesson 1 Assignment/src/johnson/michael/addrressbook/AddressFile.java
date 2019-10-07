@@ -19,7 +19,6 @@ public class AddressFile extends RandomAccessFile {
    * Opens a new AddressFile.
    *
    * @param fileName The file path to the address database.
-   *
    * @throws FileNotFoundException When the file can not be opened because of permission issues,
    *     folders not existing, or other IO errors that prevent the file from being created.
    */
@@ -34,7 +33,6 @@ public class AddressFile extends RandomAccessFile {
    * Reads the next address in the file.
    *
    * @return The read address.
-   *
    * @throws EOFException Whenever the end of the file is unexpectedly reached.
    */
   public Address readAddress() throws IOException {
@@ -57,9 +55,7 @@ public class AddressFile extends RandomAccessFile {
    * Reads the Address at index.
    *
    * @param index The index to read the address at.
-   *
    * @return The read Address.
-   *
    * @throws EOFException Whenever the end of the file is unexpectedly reached.
    */
   public Address readAddress(final long index) throws IOException {
@@ -176,15 +172,17 @@ public class AddressFile extends RandomAccessFile {
   }
 
   private void skipFully(final int n) throws IOException {
-    for (int skipped = 0; skipped < n;) {
+    for (int skipped = 0; skipped < n; ) {
       final int iterationSkipped = this.skipBytes(n - skipped);
       if (iterationSkipped <= 0) {
         // Technically, skipping 0 or fewer bytes doesn't always indicate the end of file,
         // particularly with buffered files. However, for simplicity, we're going to assume that
         // skipping 0 bytes indicates the end of the file.
 
-        throw new EOFException(String.format(
-            "reached end of file after %d bytes while attempting to skip %d bytes", skipped, n));
+        throw new EOFException(
+            String.format(
+                "reached end of file after %d bytes while attempting to skip %d bytes",
+                skipped, n));
       }
 
       skipped += iterationSkipped;

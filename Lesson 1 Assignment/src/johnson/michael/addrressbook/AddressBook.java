@@ -120,8 +120,10 @@ public class AddressBook extends Application {
 
       this.clearTextFields();
     } catch (final IOException ex) {
-      this.showExceptionAndWait("Error opening new record",
-          "An error occurred while opening a new record.\nPlease try again later.", ex);
+      this.showExceptionAndWait(
+          "Error opening new record",
+          "An error occurred while opening a new record.\nPlease try again later.",
+          ex);
       return;
     }
   }
@@ -149,8 +151,10 @@ public class AddressBook extends Application {
 
       this.clearTextFields();
     } catch (final IOException ex) {
-      this.showExceptionAndWait("Error reading first record",
-          "An error occurred while reading the first record.\nPlease try again later.", ex);
+      this.showExceptionAndWait(
+          "Error reading first record",
+          "An error occurred while reading the first record.\nPlease try again later.",
+          ex);
       return;
     }
   }
@@ -187,8 +191,10 @@ public class AddressBook extends Application {
 
       this.clearTextFields();
     } catch (final IOException ex) {
-      this.showExceptionAndWait("Error reading previous record",
-          "An error occurred while reading the previous record.\nPlease try again later.", ex);
+      this.showExceptionAndWait(
+          "Error reading previous record",
+          "An error occurred while reading the previous record.\nPlease try again later.",
+          ex);
       return;
     }
   }
@@ -212,8 +218,10 @@ public class AddressBook extends Application {
 
       return;
     } catch (final IOException ex) {
-      this.showExceptionAndWait("Error reading next record",
-          "An error occurred while reading the next record.\nPlease try again later.", ex);
+      this.showExceptionAndWait(
+          "Error reading next record",
+          "An error occurred while reading the next record.\nPlease try again later.",
+          ex);
       return;
     }
   }
@@ -237,8 +245,10 @@ public class AddressBook extends Application {
       final Address address = this.addressFile.readAddress(seekTo);
       this.displayAddress(address);
     } catch (final IOException ex) {
-      this.showExceptionAndWait("Error reading last record",
-          "An error occurred while reading the first record.\nPlease try again later.", ex);
+      this.showExceptionAndWait(
+          "Error reading last record",
+          "An error occurred while reading the first record.\nPlease try again later.",
+          ex);
       return;
     }
   }
@@ -297,8 +307,10 @@ public class AddressBook extends Application {
       alert.setContentText("Your record has been saved.");
       alert.showAndWait();
     } catch (final IOException ex) {
-      this.showExceptionAndWait("Error updating record",
-          "An error occurred while updating the record.\nPlease try again later.", ex);
+      this.showExceptionAndWait(
+          "Error updating record",
+          "An error occurred while updating the record.\nPlease try again later.",
+          ex);
     }
   }
 
@@ -414,8 +426,9 @@ public class AddressBook extends Application {
     }
 
     if (maxLength <= 0) {
-      throw new IllegalArgumentException(String.format(
-          "maxLength must be greater than 0; the given max length was %d", maxLength));
+      throw new IllegalArgumentException(
+          String.format(
+              "maxLength must be greater than 0; the given max length was %d", maxLength));
     }
 
     final Label label = new Label(labelText);
