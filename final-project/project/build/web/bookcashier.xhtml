@@ -22,7 +22,7 @@
             <p>
                 <h:outputText value="#{bundle.AmountSubtotal}" />
                 <strong>
-                    <h:outputText value="#{cart.total}">
+                    <h:outputText value="#{cart.subTotal}">
                         <f:convertNumber currencySymbol="$" type="currency"/>
                     </h:outputText>
                 </strong>
@@ -53,7 +53,8 @@
                     <f:valueChangeListener
                         type="javaeetutorial.dukesbookstore.listeners.NameChanged" /> 
                 </h:inputText>
-                <h:message styleClass="error-message" for="name"/>
+                <h:message  styleClass="error-message" for="name"/>
+                <h:outputLabel />
 
                 <!-- Credit card number -->
                 <h:outputLabel for="ccno" value="#{bundle.CCNumber}"/>
@@ -67,28 +68,34 @@
                         pattern="\d{16}|\d{4} \d{4} \d{4} \d{4}|\d{4}-\d{4}-\d{4}-\d{4}"/> 
                 </h:inputText>
                 <h:message styleClass="error-message" for="ccno"/>
+                <h:outputLabel />
                 
                 <!-- State -->
                 <h:outputLabel for="state" value="#{bundle.State}" />
-                <h:selectOneMenu id="stateItems"
+                <h:selectOneMenu id="state"
                                     value="#{stateTax.chosenState}">
-                    <f:selectItems value="#{stateTax.states}"/>
+                    <f:selectItems value="#{stateTax.states}"
+                                   var="n"
+                                   itemValue="#{n.state}"
+                                   itemLabel="#{n.name}"
+                                   itemDescription="#{n.name}"/>
                 </h:selectOneMenu>
                 <h:message styleClass="error-message" for="state"/>
+                <h:outputLabel />
 
                 <!-- Shipping option -->
                 <h:outputLabel for="shippingOption" value="#{bundle.Shipping}"/>
                 <h:selectOneMenu id="shippingOption"
                                  required="true"
                                  value="#{cashierBean.shippingOption}">
-                    <f:selectItem itemValue="2"
-                                  itemLabel="#{bundle.QuickShip}"/>
-                    <f:selectItem itemValue="5"
-                                  itemLabel="#{bundle.NormalShip}"/>
-                    <f:selectItem itemValue="7"
-                                  itemLabel="#{bundle.SaverShip}"/>
+                    <f:selectItems value="#{cashierBean.shippingOptions}"
+                                   var="n"
+                                   itemValue="#{n.id}"
+                                   itemLabel="#{n.name}"
+                                   itemDescription="#{n.name}"/>
                 </h:selectOneMenu>
                 <h:message styleClass="error-message" for="shippingOption"/>
+                <h:outputLabel />
 
                 <!-- Newsletter subscriptions -->
                 <h:outputLabel for="newslettercheckbox" 
@@ -99,8 +106,10 @@
                     <f:selectItems value="#{cashierBean.newsletterItems}"/>
                 </h:selectManyCheckbox>
                 <h:message styleClass="error-message" for="newslettercheckbox"/>
+                <h:outputLabel />
 
                 <h:message styleClass="error-message" for="fanClub" />
+                <h:outputLabel />
 
             </h:panelGrid>
             <h:panelGrid columns="2" 
@@ -122,7 +131,7 @@
                               binding="#{cashierBean.thankYou}"
                               value="#{bundle.ThanksMsg}" />
                 <h:commandButton value="#{bundle.SubmitToReview}"
-                                 action="#{cashierBean.submit}">
+                                 action="#{cashierBean.moveToReview}">
                     <f:setPropertyActionListener 
                         target="#{cashierBean.stringProperty}" value=""/>
                 </h:commandButton>

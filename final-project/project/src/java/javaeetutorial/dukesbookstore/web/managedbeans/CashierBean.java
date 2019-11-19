@@ -29,7 +29,7 @@ public class CashierBean extends AbstractBean {
   private String name = null;
   private String creditCardNumber = null;
   private Date shipDate;
-  private String shippingOption = "2";
+  private ShippingOption shippingOption = ShippingOption.NORMAL_SHIP;
   UIOutput specialOfferText = null;
   UISelectBoolean specialOffer = null;
   UIOutput thankYou = null;
@@ -82,11 +82,15 @@ public class CashierBean extends AbstractBean {
     this.shipDate = shipDate;
   }
 
-  public void setShippingOption(String shippingOption) {
+  public ShippingOption[] getShippingOptions() {
+    return ShippingOption.values();
+  }
+
+  public void setShippingOption(final ShippingOption shippingOption) {
     this.shippingOption = shippingOption;
   }
 
-  public String getShippingOption() {
+  public ShippingOption getShippingOption() {
     return this.shippingOption;
   }
 
@@ -122,14 +126,8 @@ public class CashierBean extends AbstractBean {
     this.stringProperty = stringProperty;
   }
 
-  public String submit() {
-    // Calculate and save the ship date
-    int days = Integer.valueOf(shippingOption).intValue();
-    Calendar cal = Calendar.getInstance();
-    cal.add(Calendar.DAY_OF_MONTH, days);
-    setShipDate(cal.getTime());
-
-    if ((cart.getTotal() > 100.00) && !specialOffer.isRendered()) {
+  public String moveToReview() {
+    if ((cart.getSubTotal() > 100.00) && !specialOffer.isRendered()) {
       specialOfferText.setRendered(true);
       specialOffer.setRendered(true);
 
@@ -138,16 +136,57 @@ public class CashierBean extends AbstractBean {
       thankYou.setRendered(true);
 
       return null;
-    } else {
-      try {
-        bookRequestBean.updateInventory(cart);
-      } catch (OrderException ex) {
-        return "bookordererror";
-      }
+    }
 
-      cart.clear();
+    return ("bookconfirmorder");
+  }
 
-      return ("bookreceipt");
+  public String submit() {
+    int days = this.getShippingOption().getNumDays();
+    Calendar cal = Calendar.getInstance();
+    cal.add(Calendar.DAY_OF_MONTH, days);
+    setShipDate(cal.getTime());
+
+    try {
+      bookRequestBean.updateInventory(cart);
+    } catch (OrderException ex) {
+      return "bookordererror";
+    }
+
+    cart.clear();
+
+    return ("bookreceipt");
+  }
+
+  public static enum ShippingOption {
+    QUICK_SHIP("Quick Shipping", 15.95, 2),
+    NORMAL_SHIP("Normal Shipping", 7.95, 5),
+    SAVER_SHIP("Saver Shipping", 2.99, 7);
+
+    private final String name;
+    private final double cost;
+    private final int numDays;
+
+    ShippingOption(final String name, final double cost, final int numDays) {
+      this.name = name;
+      this.cost = cost;
+      this.numDays = numDays;
+    }
+
+    public String getId() {
+      return this.toString();
+    }
+
+    public String getName() {
+      return this.name;
+    }
+
+    public double getCost() {
+      return this.cost;
+    }
+
+    public int getNumDays() {
+      return this.numDays;
     }
   }
 }

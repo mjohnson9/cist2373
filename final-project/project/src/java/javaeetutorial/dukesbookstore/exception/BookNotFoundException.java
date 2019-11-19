@@ -13,7 +13,11 @@ public class BookNotFoundException extends Exception {
 
   public BookNotFoundException() {}
 
-  public BookNotFoundException(String msg) {
+  public BookNotFoundException(final String msg) {
     super(msg);
+  }
+
+  public BookNotFoundException(final String msg, final Throwable cause) {
+    super(msg, cause);
   }
 }

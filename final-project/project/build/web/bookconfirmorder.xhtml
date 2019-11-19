@@ -14,7 +14,7 @@
                 <h:outputText value="#{bundle.ReviewOrderDescription}"/>
             </p>
 
-            <h:panelGrid columns="2"
+            <h:panelGrid columns="3"
                          headerClass="list-header"
                          styleClass="list-background"
                          rowClasses="list-row-even, list-row-odd"
@@ -26,50 +26,37 @@
                     <h:outputText value="#{bundle.ReviewOrder}"/>
                 </f:facet>
 
-                <!-- State -->
+                <!-- Subtotal -->
                 <h:outputLabel value="#{bundle.Subtotal}" />
+                <h:outputLabel />
                 <h:outputText value="#{cart.subTotal}">
                     <f:convertNumber currencySymbol="$" type="currency"/>
                 </h:outputText>
+                
+                <!-- Taxes -->
+                <h:outputLabel value="#{bundle.Tax}" />
+                <h:outputText value="#{stateTax.taxRate}">
+                    <f:convertNumber type="percent" />
+                </h:outputText>
+                <h:outputText value="#{stateTax.taxes}">
+                    <f:convertNumber currencySymbol="$" type="currency" />
+                </h:outputText>
 
                 <!-- Shipping option -->
-                <h:outputLabel for="shippingOption" value="#{bundle.Shipping}"/>
-                <h:selectOneMenu id="shippingOption"
-                                 required="true"
-                                 value="#{cashierBean.shippingOption}">
-                    <f:selectItem itemValue="2"
-                                  itemLabel="#{bundle.QuickShip}"/>
-                    <f:selectItem itemValue="5"
-                                  itemLabel="#{bundle.NormalShip}"/>
-                    <f:selectItem itemValue="7"
-                                  itemLabel="#{bundle.SaverShip}"/>
-                </h:selectOneMenu>
-                <h:message styleClass="error-message" for="shippingOption"/>
+                <h:outputLabel value="#{bundle.Shipping}"/>
+                <h:outputText value="#{cashierBean.shippingOption.name}" />
+                <h:outputText value="#{cashierBean.shippingOption.cost}">
+                    <f:convertNumber currencySymbol="$" type="currency" />
+                </h:outputText>
 
-                <!-- Newsletter subscriptions -->
-                <h:outputLabel for="newslettercheckbox" 
-                               value="#{bundle.Newsletters}"/>
-                <h:selectManyCheckbox id="newslettercheckbox"
-                                      layout="pageDirection"
-                                      value="#{cashierBean.newsletters}">
-                    <f:selectItems value="#{cashierBean.newsletterItems}"/>
-                </h:selectManyCheckbox>
-                <h:message styleClass="error-message" for="newslettercheckbox"/>
-
-                <h:message styleClass="error-message" for="fanClub" />
-
+                
+                <h:outputLabel value="#{bundle.GrandTotal}" />
+                <h:outputLabel />
+                <h:outputText value="#{cart.total}">
+                    <f:convertNumber currencySymbol="$" type="currency" />
+                </h:outputText>
             </h:panelGrid>
-            <h:panelGrid columns="2" 
-                         columnClasses="special-offer, list-column-left" 
-                         summary="#{bundle.DukeFanClub}" >
-                <h:selectBooleanCheckbox id="fanClub" 
-                                         rendered="false"
-                                         binding="#{cashierBean.specialOffer}" />
-                <h:outputLabel for="fanClub"
-                               rendered="false"
-                               binding="#{cashierBean.specialOfferText}"
-                               value="#{bundle.DukeFanClub}" />
-            </h:panelGrid>
+
             <h:panelGrid columns="1" 
                          columnClasses="special-offer" 
                          summary="#{bundle.ThanksMsg}">

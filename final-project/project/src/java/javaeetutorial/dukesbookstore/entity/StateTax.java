@@ -19,6 +19,7 @@ import javax.validation.constraints.NotNull;
 public class StateTax implements Serializable {
   // private static final long serialVersionUID = -4146681491856848089L;
   @Id @NotNull private String state;
+  @NotNull private String stateName;
   private Double taxRate;
 
   public StateTax() {}
@@ -27,8 +28,9 @@ public class StateTax implements Serializable {
     this.state = state;
   }
 
-  public StateTax(final String state, final Double taxRate) {
+  public StateTax(final String state, final String stateName, final Double taxRate) {
     this.state = state;
+    this.stateName = stateName;
     this.taxRate = taxRate;
   }
 
@@ -38,6 +40,14 @@ public class StateTax implements Serializable {
 
   public void setState(final String state) {
     this.state = state;
+  }
+
+  public String getName() {
+    return this.stateName;
+  }
+
+  public void setName(final String name) {
+    this.stateName = name;
   }
 
   public Double getTaxRate() {

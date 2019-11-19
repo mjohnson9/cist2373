@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaeetutorial.dukesbookstore.entity.Book;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -29,6 +30,8 @@ public class ShoppingCart extends AbstractBean implements Serializable {
   private static final long serialVersionUID = -115105724952554868L;
   HashMap<String, ShoppingCartItem> items = null;
   int numberOfItems = 0;
+  @Inject TaxBean taxes;
+  @Inject CashierBean cashier;
 
   public ShoppingCart() {
     items = new HashMap<>();
@@ -73,7 +76,7 @@ public class ShoppingCart extends AbstractBean implements Serializable {
     return numberOfItems;
   }
 
-  public synchronized double getSubTotal() {
+  private double getSubTotalRaw() {
     double amount = 0.0;
     for (ShoppingCartItem item : getItems()) {
       Book bookDetails = (Book) item.getItem();
@@ -82,6 +85,18 @@ public class ShoppingCart extends AbstractBean implements Serializable {
     }
 
     return roundOff(amount);
+  }
+
+  public synchronized double getSubTotal() {
+    return this.roundOff(this.getSubTotalRaw());
+  }
+
+  public synchronized double getTotal() {
+    double total = this.getSubTotalRaw();
+    total *= (1d + taxes.getTaxRate());
+    total += cashier.getShippingOption().getCost();
+
+    return this.roundOff(total);
   }
 
   private double roundOff(double x) {
